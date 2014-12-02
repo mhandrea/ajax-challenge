@@ -3,11 +3,23 @@
 body {
     font-family: 'Ubuntu', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-weight: 400;
+    margin-left: 25%;
+    margin-right: 25%;
+    background: url(http://www.iwallpapersfive.com/wp-content/uploads/2013/11/plain-black-and-white-background-black-background-wallpaper-hd-wallpapers--1920x1200px--indiwall.jpg);
+    color: orange;
 }
 
 .product-picture {
     float: left;
     height: 130px;
     margin-right: 10px;
+}
+
+p {
+	color: white;
+}
+
+h1, h2, h3 {
+	color: #00CCFF;
 }
 

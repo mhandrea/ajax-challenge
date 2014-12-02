@@ -6,10 +6,11 @@
         <title>Product Comments</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="shortcut icon" href="img/super-bass-o-matic-76.jpg">
     </head>
     <body>
 
-        <main class="container">
+        <main class="container" ng-app="review_app" ng-controller="TasksController">
             <section>
                 <img src="img/super-bass-o-matic-76.jpg" alt="product picture" class="product-picture">
                 <h1>The Super Bass-o-Matic '76</h1>
@@ -26,6 +27,23 @@
                 http://angular-ui.github.io/bootstrap/#/rating
                 their script file is included below
                 -->
+
+                <form ng-submit="add_comment(new_comment)">
+                    <div class="form-group">
+                        <div>
+                            <label>Rating: </label>
+                            <rating ng-model="new_comment.rating" max="5" on-hover="hoveringOver(new_comment.rating)"></rating>
+                        </div>
+                        <input ng-model="new_comment.title" type="text" class="form-control" name="title" id="title" placeholder="Title"></input>
+                        <input ng-model="new_comment.text" type="text" size="50" maxLength="255" class="form-control" name="text" id="text" placeholder="Start writing..."></input>
+                        <input ng-model="new_comment.name" type="text" class="form-control" name="username" id="username" placeholder="What would you like to be called?"></input>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" ng-disabled="inserting">Submit Comment</button>
+                        <img src="img/ajax-spinner.gif" alt="loading animation" ng-if="loading || updating"/>
+                    </div>
+                </form>
             </section>
 
             <section>
@@ -35,6 +53,26 @@
                 each comment should also have UI allowing the user to vote up/down the comment
                 as well as delete it
                  -->
+                <table class="table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="comment in comments">
+                            <td>
+                                {{comment.score}}
+                            </td>
+                            <td id="title">
+                                {{comment.title}} 
+                            </td>
+                            <td id="text">
+                                {{comment.text}}
+                            </td>
+                            <td id="username">
+                                {{comment.name}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
 
         </main>
