@@ -10,7 +10,7 @@
     </head>
     <body>
 
-        <main class="container" ng-app="review_app" ng-controller="TasksController">
+        <main class="container" ng-app="CommentApp" ng-controller="CommentController">
             <section>
                 <img src="img/super-bass-o-matic-76.jpg" alt="product picture" class="product-picture">
                 <h1>The Super Bass-o-Matic '76</h1>
@@ -36,7 +36,7 @@
                         </div>
                         <input ng-model="new_comment.title" type="text" class="form-control" name="title" id="title" placeholder="Title"></input>
                         <input ng-model="new_comment.text" type="text" size="50" maxLength="255" class="form-control" name="text" id="text" placeholder="Start writing..."></input>
-                        <input ng-model="new_comment.name" type="text" class="form-control" name="username" id="username" placeholder="What would you like to be called?"></input>
+                        <input ng-model="new_comment.name" type="text" class="form-control" name="name" id="name" placeholder="What would you like to be called?"></input>
                     </div>
 
                     <div class="form-group">
@@ -58,18 +58,10 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="comment in comments">
-                            <td>
-                                {{comment.score}}
-                            </td>
-                            <td id="title">
-                                {{comment.title}} 
-                            </td>
-                            <td id="text">
-                                {{comment.text}}
-                            </td>
-                            <td id="username">
-                                {{comment.name}}
-                            </td>
+                            <td>{{comment.score}}</td>
+                            <td>{{comment.title}}</td>
+                            <td>{{comment.text}}</td>
+                            <td>{{comment.name}}</td>
                         </tr>
                     </tbody>
                 </table>
