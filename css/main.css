@@ -3,12 +3,38 @@
 body {
     font-family: 'Ubuntu', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-weight: 400;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 10%;
+    margin-right: 10%;
     background: url(http://www.iwallpapersfive.com/wp-content/uploads/2013/11/plain-black-and-white-background-black-background-wallpaper-hd-wallpapers--1920x1200px--indiwall.jpg);
     color: orange;
 }
 
+input[id="title"], input[id="name"] {
+    padding: 10px;
+    max-width: 30%;
+    border: solid 2px;
+    border-color: darkgray;
+}
+
+input[id="text"] {
+    padding: 10px;
+    max-width: 100%;
+    border: solid 2px;
+    border-color: darkgray;
+}
+ 
+ .haha {
+    margin-left: 40%;
+ }
+
+.main {
+    margin-left: 10%;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    background-color: black;
+    opacity: 0.9;
+}
 .product-picture {
     float: left;
     height: 130px;
@@ -23,3 +49,26 @@ h1, h2, h3 {
 	color: #00CCFF;
 }
 
+header {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 2em;
+
+}
+
+ .special {
+    margin-left: 5%;
+ }
+
+.add {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+td {
+    background-color: #484848;
+    border: solid 3px;
+    border-color: #00CCFF;
+}

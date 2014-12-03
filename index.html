@@ -10,15 +10,15 @@
     </head>
     <body>
 
-        <main class="container" ng-app="myApp" ng-controller="CommentController">
-            <section>
+        <main class="main" ng-app="myApp" ng-controller="CommentController">
+            <header>
                 <img src="img/super-bass-o-matic-76.jpg" alt="product picture" class="product-picture">
                 <h1>The Super Bass-o-Matic '76</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia cumque deserunt ullam repudiandae nisi corporis! Ipsum, ducimus commodi, itaque porro distinctio consequuntur! Autem doloremque numquam nemo ex nulla tempora quis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde nihil doloribus excepturi quisquam error possimus veritatis facere, commodi cumque ab atque dolore ducimus obcaecati ipsa, impedit! Consequuntur, eligendi iure cumque!</p>
-            </section>
+            </header>
 
-            <section>
-                <h2>Add a Comment</h2>
+            <section class="add">
+                <h2 class="special">Add a Comment:</h2>
                 <!--  
                 put a form here for entering a new comment
                 the user must select a rating, and enter a name, title, and comment body
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <div>
                             <label>Rating: </label>
-                            <rating ng-model="new_comment.rating" max="5" on-hover="hoveringOver(new_comment.rating)"></rating>
+                            <rating id="rating" ng-model="new_comment.rating" max="5"></rating>
                         </div>
                         <input ng-model="new_comment.title" type="text" class="form-control" name="title" id="title" placeholder="Title"></input>
                         <input ng-model="new_comment.text" type="text" size="50" maxLength="255" class="form-control" name="text" id="text" placeholder="Start writing..."></input>
@@ -44,24 +44,42 @@
                         <img src="img/ajax-spinner.gif" alt="loading animation" ng-if="loading || updating"/>
                     </div>
                 </form>
+            
             </section>
 
             <section>
-                <h2>Comments</h2>
+                <h2 class="special">Comments: </h2>
+                <p class="special"> Ordered by Likes</p>
+                <form class="haha" ng-click="refresh_comments()">
+                    <div class="form-group">
+                        <button type="click" class="btn btn-primary" ng-disabled="inserting">Refresh Comments</button>
+                    </div>
+                </form>
                 <!-- 
                 display existing comments here
                 each comment should also have UI allowing the user to vote up/down the comment
                 as well as delete it
                  -->
+                <p style="color: red; font-weight: 700" ng-hide="comments.length > 0">No comments yet. Be the first to review this!</p>
                 <table class="table">
-                    <thead>
-                    </thead>
                     <tbody>
                         <tr ng-repeat="comment in comments">
-                            <td>{{comment.score}}</td>
-                            <td>{{comment.title}}</td>
-                            <td>{{comment.text}}</td>
-                            <td>{{comment.name}}</td>
+                            <td style="width: 7%">Remove <input type="checkbox" ng-model="comment.deleted" ng-change="delete_comment(comment)"></input></td>
+                            
+                            <td style="width: 9%">    
+                                <div ng-click="upvote_comment(comment, 1)">
+                                    <span class="glyphicon glyphicon-ok" type="click" ng-disabled="inserting">  Likes: {{comment.score}}</span>
+                                </div>
+                                <div ng-click="upvote_comment(comment, -1)">
+                                    <span class="glyphicon glyphicon-remove" type="click" ng-disabled="inserting"></span>
+                                </div>
+                            </td>
+                            
+                            
+                            <td>Rating: {{comment.rating}} stars!</td>
+                            <td>Title: {{comment.title}}</td>
+                            <td>Comment: {{comment.text}}</td>
+                            <td>Username: {{comment.name}}</td>
                         </tr>
                     </tbody>
                 </table>
