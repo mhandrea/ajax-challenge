@@ -4,11 +4,11 @@
     define your module and controllers here
 */
 
-angular.module('CommentApp', ['ui.bootstrap'])
+angular.module('myApp', ['ui.bootstrap'])
 	.config(function($httpProvider) {
 		// set default HTTP headers that Parse requires
 		// HTTP request we make
-		$httpProvider.defaults.headers.common['X-Parse-Application-Id'] = 'Lpi7BkWiEtAHRjlc3rofafI3C0UGsCDgf1WWeCjX';
+		$httpProvider.defaults.headers.common['X-Parse-Application-Id'] = 'gXsJUBfD3G80p4cX1RFZnFA09wi8FUVTZ3TZMxeL';
 		$httpProvider.defaults.headers.common['X-Parse-REST-API-Key'] = '7lgnhwHh6uzz7sojGg8MvPQzSOFoSrihVScosKgC';
 	})
 	.controller('CommentController', function($scope, $http) {
@@ -17,7 +17,7 @@ angular.module('CommentApp', ['ui.bootstrap'])
 		$scope.get_comments = function() {	
 			// get all tasks
 			$scope.loading = true;
-			$http.get(base_url) // '?where={"done": false}' 
+			$http.get(base_url) // 404 returned.
 				.success(function(response_data) {
 					$scope.comments = response_data;
 				})
@@ -58,14 +58,14 @@ angular.module('CommentApp', ['ui.bootstrap'])
 		// function to update an existing comment
 		$scope.upvote_comment = function(comment, pnts_change) {
 			$scope.updating = true;
-				var comment = {
+				var comment2 = {
 					score: {
 						__op: "Increment",
 						amount: pnts_change
 					}
 				};
 			};
-			$http.put(base_url + '/' + comment.objectId, comment)
+			$http.put(base_url + '/' + comment.objectId, comment2)
 				.success(function(response_data) {
 					comment.score = response_data.score;
 				})
